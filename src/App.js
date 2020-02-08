@@ -1,7 +1,6 @@
 import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import Routes from "./components/Routes";
 import Home from "./views/Home";
 import "antd/dist/antd.css";
 

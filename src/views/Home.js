@@ -1,11 +1,16 @@
 import React, { Component } from "react";
 import { Layout, Input, DatePicker, Radio, Button } from "antd";
 import * as UI from "../UI";
+import RenderSearch from "../components/RenderSearch";
 
 export default class Home extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      radioValue1: "",
+      radioValue2: "",
+      searchQuery: ""
+    };
   }
 
   dateChange(date, dateString) {
@@ -19,6 +24,16 @@ export default class Home extends Component {
     });
   };
 
+  radioCheckSearch = () => {
+    const radioValue1 = this.state;
+    // fix this for searchtype
+    if (radioValue1) {
+      console.log("healines only");
+    } else {
+      // search everything
+    }
+  };
+
   render() {
     const { Header, Footer, Content } = Layout;
     const { Search } = Input;
@@ -27,29 +42,32 @@ export default class Home extends Component {
       <div>
         <Layout>
           <UI.HeaderStyle>
-            <Header>News Search</Header>
+            <Header>Search the News</Header>
           </UI.HeaderStyle>
           <UI.ContentContainer>
             <Content>
               <UI.SearchContainer>
                 <Radio.Group onChange={this.onChange} value={this.state.value}>
-                  <Radio value={1}>Headlines Only</Radio>
-                  <Radio value={2}>Everything</Radio>
+                  <Radio value={this.state.radioValue1}>Headlines Only</Radio>
+                  <Radio value={this.state.radioValue2}>Everything</Radio>
                 </Radio.Group>
                 <RangePicker onChange={() => this.dateChange()} />
                 <Search
-                  placeholder="Search the News"
-                  //enterButton="Search"
-                  // size="large"
-                  //onSearch={value => console.log(value)}
+                  placeholder="What are you looking for?"
+                  onSearch={value => console.log(value) => this.state.}
+                  style={{ width: 425 }}
                 />
                 <Button type="primary" icon="search">
                   Search
                 </Button>
               </UI.SearchContainer>
+              <UI.ArticleContainer>
+                <div>
+                  <RenderSearch />
+                </div>
+              </UI.ArticleContainer>
             </Content>
           </UI.ContentContainer>
-
           <UI.FooterStyle>
             <Footer>Footer</Footer>
           </UI.FooterStyle>

@@ -1,9 +1,7 @@
 import styled from "@emotion/styled";
 
 export const SiteContainer = styled("div")`
-  .ant-layout {
-    min-height: 100vh;
-  }
+  padding-bottom: 69px;
 `;
 
 export const HeaderStyle = styled("div")`
@@ -13,28 +11,29 @@ export const HeaderStyle = styled("div")`
     background-color: lightblue;
     font-size: 24px;
     font-family: "Montserrat", sans-serif;
-    margin-bottom: 24px;
+    // margin-bottom: 24px;
   }
 `;
 
 export const ContentContainer = styled("div")`
-  display: flex;
-  justify-content: center;
-  margin-left: auto;
-  margin-right: auto;
+  // display: flex;
+  // justify-content: center;
+  margin-left: 0;
+  margin-right: 0;
   height: 700px;
+  // background-color: #fff;
   box-sizing: border-box;
   font-family: "Montserrat", sans-serif;
 `;
 
 export const SearchContainer = styled("div")`
-  // border: grey 3px solid;
-  width: 650px;
+  border-top: 6px double #000;
+  border-bottom: 2px solid #000;
   min-width: 100%;
-  margin-left: 0;
-  margin-right: 0;
+  padding-left: auto;
+  padding-right: auto;
+  background-color: #f0f2f5;
   height: 200px;
-  padding-top: 32px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -58,8 +57,9 @@ export const SearchContainer = styled("div")`
   }
 
   .ant-input-search {
+    height: 38px;
     margin-bottom: 16px;
-    min-width: 100%;
+    width: 400px;
   }
 
   .ant-btn {
@@ -67,16 +67,25 @@ export const SearchContainer = styled("div")`
   }
 `;
 
+export const ArticleContainer = styled("div")`
+  margin-left: 75px;
+  margin-right: 75px;
+  height: 700px;
+  background-color: #fff;
+  // border-left: 2px solid black;
+  // border-right: 2px solid black;
+
+  .ant-btn {
+    margin-left: auto;
+    margin-right: auto;
+  }
+`;
+
 export const FooterStyle = styled("div")`
   .ant-layout-footer {
     background-color: lightblue;
     width: 100%;
-    // position: absolute;
-    // bottom: 0;
-    // left: 0;
-    // right: 0:
     font-family: "Montserrat", sans-serif;
     display: flex;
-    margin-bottom: 0;
   }
 `;
