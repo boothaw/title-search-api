@@ -54,7 +54,7 @@ export default class Home extends Component {
                 <RangePicker onChange={() => this.dateChange()} />
                 <Search
                   placeholder="What are you looking for?"
-                  onSearch={value => console.log(value) => this.state.}
+                  onSearch={value => console.log(value)}
                   style={{ width: 425 }}
                 />
                 <Button type="primary" icon="search">
@@ -62,9 +62,7 @@ export default class Home extends Component {
                 </Button>
               </UI.SearchContainer>
               <UI.ArticleContainer>
-                <div>
-                  <RenderSearch />
-                </div>
+                <div>{/* <RenderSearch /> */}</div>
               </UI.ArticleContainer>
             </Content>
           </UI.ContentContainer>
