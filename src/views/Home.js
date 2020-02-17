@@ -3,14 +3,21 @@ import { Layout, Input, DatePicker, Radio, Button } from "antd";
 import * as UI from "../UI";
 import RenderSearch from "../components/RenderSearch";
 
+import { fakeDataResponse } from "../constants/FakeData";
+
 export default class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      radioValue1: "",
-      radioValue2: "",
-      searchQuery: ""
+      searchResults: [],
+      searchQuery: "",
+      filterType: ""
     };
+  }
+
+  searchArticles(searchTerm) {
+    console.log("SEARCH ARTICLES", searchTerm);
+    // Make the API call.
   }
 
   dateChange(date, dateString) {
@@ -18,9 +25,8 @@ export default class Home extends Component {
   }
 
   onChange = e => {
-    console.log("radio checked", e.target.value);
     this.setState({
-      value: e.target.value
+      filterType: e.target.value
     });
   };
 
@@ -47,22 +53,31 @@ export default class Home extends Component {
           <UI.ContentContainer>
             <Content>
               <UI.SearchContainer>
-                <Radio.Group onChange={this.onChange} value={this.state.value}>
-                  <Radio value={this.state.radioValue1}>Headlines Only</Radio>
-                  <Radio value={this.state.radioValue2}>Everything</Radio>
+                <Radio.Group onChange={this.onChange} value={this.state.filterType}>
+                  <Radio value="HEADLINES">Headlines Only</Radio>
+                  <Radio value="EVERYTHING">Everything</Radio>
                 </Radio.Group>
                 <RangePicker onChange={() => this.dateChange()} />
                 <Search
                   placeholder="What are you looking for?"
-                  onSearch={value => console.log(value)}
+                  onSearch={value => this.searchArticles(value)}
+                  onChange={e =>
+                    this.setState({ searchQuery: e.currentTarget.value })
+                  }
                   style={{ width: 425 }}
                 />
-                <Button type="primary" icon="search">
+                <Button
+                  onClick={() => this.searchArticles(this.state.searchQuery)}
+                  type="primary"
+                  icon="search"
+                >
                   Search
                 </Button>
               </UI.SearchContainer>
               <UI.ArticleContainer>
-                <div>{/* <RenderSearch /> */}</div>
+                <div>
+                  <RenderSearch results={this.state.searchResults} />
+                </div>
               </UI.ArticleContainer>
             </Content>
           </UI.ContentContainer>

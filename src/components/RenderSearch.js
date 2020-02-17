@@ -1,15 +1,10 @@
 import React, { Component } from "react";
-import fakeDataResponse from "../constants/FakeData";
+// import fakeDataResponse from "../constants/FakeData";
 
-export default class RenderSearch extends Component {
-  render() {
-    const renderUI = () => {
-      const renderData = () => {
-        return fakeDataResponse.map(data => {
-          return <div>{data.title}</div>;
-        });
-      };
-    };
-    return <div>{this.renderData()}</div>;
-  }
-}
+const RenderSearch = ({ results }) => {
+  console.log("RESULTS", results);
+  // Map over this... results[0].articles
+  return results.map(result => <div>...</div>);
+};
+
+export default RenderSearch;
