@@ -5,14 +5,34 @@ import RenderSearch from "../components/RenderSearch";
 
 import { fakeDataResponse } from "../constants/FakeData";
 
+import InputField from "../components/InputField";
+
 export default class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
       searchResults: [],
       searchQuery: "",
-      filterType: ""
+      filterType: "",
+      inputText: ""
     };
+  }
+
+  componentDidMount() {
+    // wwhen the page loads,
+    // getInitialArticles() ... would fetch initial payload of articles
+  }
+
+  componentWillReceiveProps(nProps) {
+    // you want to run some code on the prop name of 'doSomething'..
+
+    if (nProps.doSomething === "something i care about") {
+      // run that specific code.
+    }
+  }
+
+  componentWillUnmount() {
+    // remove any window listenrs..
   }
 
   searchArticles(searchTerm) {
@@ -40,6 +60,14 @@ export default class Home extends Component {
     }
   };
 
+  doSomethingWithInputText = text => {
+    console.log("doSomethingWithInputText:", text);
+
+    this.setState({
+      inputText: text
+    });
+  };
+
   render() {
     const { Header, Footer, Content } = Layout;
     const { Search } = Input;
@@ -49,11 +77,18 @@ export default class Home extends Component {
         <Layout>
           <UI.HeaderStyle>
             <Header>Search the News</Header>
+            <InputField
+              onValue={this.doSomethingWithInputText}
+              value={this.state.inputText}
+            />
           </UI.HeaderStyle>
           <UI.ContentContainer>
             <Content>
               <UI.SearchContainer>
-                <Radio.Group onChange={this.onChange} value={this.state.filterType}>
+                <Radio.Group
+                  onChange={this.onChange}
+                  value={this.state.filterType}
+                >
                   <Radio value="HEADLINES">Headlines Only</Radio>
                   <Radio value="EVERYTHING">Everything</Radio>
                 </Radio.Group>
