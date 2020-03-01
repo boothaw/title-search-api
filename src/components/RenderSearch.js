@@ -1,5 +1,5 @@
 import React from "react";
-// import fakeDataResponse from "../constants/FakeData";
+import results from "../constants/FakeData";
 
 const RenderSearch = ({ results }) => {
   console.log("RESULTS", results);
