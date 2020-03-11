@@ -3,9 +3,9 @@ import { Layout, Input, DatePicker, Radio, Button } from "antd";
 import * as UI from "../UI";
 import RenderSearch from "../components/RenderSearch";
 
-import { fakeDataResponse } from "../constants/FakeData";
+// import { results } from "../constants/FakeData";
 
-import InputField from "../components/InputField";
+// import InputField from "../components/InputField";
 
 export default class Home extends Component {
   constructor(props) {
@@ -77,10 +77,6 @@ export default class Home extends Component {
         <Layout>
           <UI.HeaderStyle>
             <Header>Search the News</Header>
-            <InputField
-              onValue={this.doSomethingWithInputText}
-              value={this.state.inputText}
-            />
           </UI.HeaderStyle>
           <UI.ContentContainer>
             <Content>
@@ -108,6 +104,10 @@ export default class Home extends Component {
                 >
                   Search
                 </Button>
+                {/* <InputField
+                  onValue={this.doSomethingWithInputText}
+                  value={this.state.inputText}
+                /> */}
               </UI.SearchContainer>
               <UI.ArticleContainer>
                 <div>
