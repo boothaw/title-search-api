@@ -1,4 +1,4 @@
-import { NEWS_KEY } from "../api/constants";
+import { NEWS_KEY } from "../constants";
 import { render } from "@testing-library/react";
 
 export const fetchNews = query => {
@@ -12,6 +12,7 @@ export const fetchNews = query => {
   promise
     .then(response => {
       if (response.ok) {
+        console.log("response", response);
         return response.json();
       }
     })
